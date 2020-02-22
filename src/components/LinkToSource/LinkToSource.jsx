@@ -10,9 +10,11 @@ export const LinkToSource = () => {
 
   const onLinkSubmit = (e) => {
     e.preventDefault()
-    getDataFromLink().then(data => {
-      setLinksData(data)
-    })
+    getDataFromLink()
+      .then(data => {
+        setLinksData(data)
+      })
+      .catch(error => console.warn(error))
   }
 
   return (

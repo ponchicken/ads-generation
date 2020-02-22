@@ -6,5 +6,4 @@ export const getDataFromLink = () => {
     .then(data => {
       return res
     })
-    .catch(error => console.warn(error))
 }

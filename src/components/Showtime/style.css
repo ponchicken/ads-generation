@@ -1,0 +1,15 @@
+.Showtime {
+  width: 100%;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.Showtime-item {
+  display: grid;
+  grid-gap: 30px;
+}
+
+.Showtime-row {
+  display: grid;
+  grid-gap: 10px;
+}

@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { useLinksData } from './useLinksData'
+import { useCombinations } from './useCombinations'
 
 const Context = createContext([])
 const ActionsContext = createContext({})
@@ -9,7 +9,7 @@ const Provider = ({
 }) => {
   const {
     actions, value
-  } = useLinksData()
+  } = useCombinations()
 
   return (
     <Context.Provider value={value}>
