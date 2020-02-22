@@ -1,0 +1,15 @@
+.Review {
+  width: 100%;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.Review-item {
+  display: grid;
+  grid-gap: 30px;
+}
+
+.Review-row {
+  display: grid;
+  grid-gap: 10px;
+}

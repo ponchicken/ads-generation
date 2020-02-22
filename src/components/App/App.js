@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import { LinkToSource, Showtime } from 'components'
+import { LinkToSource, Showtime, Review } from 'components'
 import { LinksData, Combinations } from 'store'
 
 export const App = () => {
@@ -29,6 +29,9 @@ export const App = () => {
           <main className="App-main">
             <div className="App-main-row">
               <LinkToSource />
+            </div>
+            <div className="App-main-row">
+              <Review />
             </div>
             <div className="App-main-row">
               <Showtime />
