@@ -1,0 +1,21 @@
+.App {
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: auto;
+  padding: 50px;
+}
+
+.App-header {
+  margin-bottom: 40px;
+}
+
+.App-header-text {
+  max-width: 400px;
+  margin: auto;
+}
+
+.App-main {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+}

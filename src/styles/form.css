@@ -1,0 +1,21 @@
+input, button {
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: var(--font-size-default);
+  border-radius: var(--radius-sm);
+}
+
+input {
+  border: 2px solid #ddd;
+}
+
+button {
+  color: #fff;
+  background-color: deepskyblue;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(0, 93, 216);
+}

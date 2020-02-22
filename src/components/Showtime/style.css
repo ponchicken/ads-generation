@@ -1,0 +1,16 @@
+.Showtime {
+  width: 100%;
+  max-width: 600px;
+  word-break: break-word;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.Showtime-item {
+  display: grid;
+  padding: 2px;
+  background-color: rgba(255,255,255,.1);
+  border-radius: var(--radius-m);
+}
+
