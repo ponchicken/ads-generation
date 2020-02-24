@@ -8,25 +8,20 @@ import {
   Tag
 } from 'react-konva'
 import BackgroundImage from './BackgroundImage'
-import BackgroundColor from './BackgroundColor'
 import { useCalcLabelParams } from './useCalcLabelParams'
-import { colorToRgba, downloadFromUrl } from './helpers'
+import { colorToRgba } from './helpers'
 
 const CanvasImage = ({
-  render,
-  onReady = () => {},
-  width,
-  height,
   text = '',
-  previewWidth = 200,
+  template,
+  background,
+  previewWidth = 300,
   substrateColor,
   textColor,
   textAlign = 'left',
   textPosition = 'top',
   fontSize = 40,
-  fontFamily = 'Arial',
-  background,
-  formatCategory = ''
+  fontFamily = 'Arial'
 }) => {
   const stageRef = useRef(null)
   const tagRef = useRef(null)
@@ -49,58 +44,25 @@ const CanvasImage = ({
     text,
     textRef,
     tagRef,
-    width,
-    height,
-    fontSize,
+    width: template.text.width,
+    height: template.text.height,
+    fontSize: template.text.fontSize,
     fontFamily,
     textAlign,
     textPosition
   })
 
-  const [textReady, setTextReady] = useState(false)
-  const [imageReady, setImageReady] = useState(false)
-
-  const isReady = textReady && imageReady
-
   useEffect(() => {
-    const calcScale = previewWidth / (width || 1)
+    const calcScale = previewWidth / (template.width || 1)
     setScale(calcScale)
     setSize({
-      width: calcScale * width,
-      height: calcScale * height
+      width: calcScale * template.width,
+      height: calcScale * template.height
     })
-  }, [setScale, previewWidth, width, height, setSize])
-
-  useEffect(() => {
-    if (tagRef.current) {
-      setTextReady(true)
-    }
-  }, [tagRef, setTextReady])
-
-  useEffect(() => {
-    if (isReady) {
-      onReady({
-        scale,
-        canvas: stageRef.current
-      })
-    }
-  }, [isReady, onReady, scale])
-
-  const onDownload = (index = 0) => () => {
-    const url = stageRef.current.toDataURL({
-      pixelRatio: 1 / scale
-    })
-
-    downloadFromUrl({
-      url,
-      filename: `${formatCategory}_${width}_${height}_${index}`
-    })
-  }
+  }, [setScale, previewWidth, template, setSize])
 
   return (
     <>
-      { isReady && render && render({ onDownload })}
-
       <Stage
         width={size.width}
         height={size.height}
@@ -109,20 +71,15 @@ const CanvasImage = ({
           x: scale,
           y: scale
         }}
-        visible={isReady}
+        style={{ background: 'red' }}
       >
         <Layer>
-          <BackgroundColor
-            onReady={() => setImageReady(true)}
-            width={width}
-            height={height}
-            color={background}
-          />
           <BackgroundImage
-            onReady={() => setImageReady(true)}
             url={background}
-            width={width}
-            height={height}
+            x={template.width - template.image.width}
+            y={template.height - template.image.height}
+            width={template.width}
+            height={template.image.height}
           />
           <Label
             x={labelParams.x}
@@ -142,7 +99,7 @@ const CanvasImage = ({
             <Text
               ref={textRef}
               text={labelParams.text}
-              fontSize={fontSize}
+              fontSize={template.text.fontSize}
               fontFamily={fontFamily}
               lineHeight={1.2}
               width={labelParams.width}

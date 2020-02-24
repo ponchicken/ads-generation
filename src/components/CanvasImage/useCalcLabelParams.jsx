@@ -15,7 +15,7 @@ const useCalcLabelParams = ({
   const [labelParams, setLabelParams] = useState(initialLabelParams)
 
   const calcVerticalTextPosition = useCallback(() => {
-    const margin = 40
+    const margin = 0
     const doubleMargin = margin * 2
     const textWidth = textObj.getTextWidth() + doubleMargin
     const maxWidth = width - doubleMargin

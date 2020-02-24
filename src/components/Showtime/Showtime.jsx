@@ -18,9 +18,8 @@ export const Showtime = () => {
         <div className={`${block}-item`} key={i}>
           <CanvasImage
             {...{
-              text,
-              width: template.width,
-              height: template.height,
+              text: title,
+              template,
               background: image.src
             }}
           />
