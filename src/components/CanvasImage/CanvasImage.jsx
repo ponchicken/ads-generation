@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react'
-import Konva from 'konva'
+import React, { useEffect, useState, useRef } from 'react'
 import {
   Stage,
   Layer,
-  Text,
-  Label,
-  Tag
+  Text
 } from 'react-konva'
-import BackgroundImage from './BackgroundImage'
-import { useCalcLabelParams } from './useCalcLabelParams'
+import { BackgroundImage } from './BackgroundImage'
+import { BackgroundColor } from './BackgroundColor'
+import { useCalcTextParams } from './useCalcTextParams'
 import { colorToRgba } from './helpers'
 
 const CanvasImage = ({
@@ -16,40 +14,23 @@ const CanvasImage = ({
   template,
   background,
   previewWidth = 300,
-  substrateColor,
   textColor,
-  textAlign = 'left',
-  textPosition = 'top',
-  fontSize = 40,
   fontFamily = 'Arial'
 }) => {
   const stageRef = useRef(null)
-  const tagRef = useRef(null)
   const textRef = useRef(null)
 
   const [scale, setScale] = useState(0)
   const [size, setSize] = useState({ width: 0, height: 0 })
 
-  var textObj = useMemo(() => new Konva.Text({
-    x: 40,
-    y: 0,
-    text,
-    fontSize,
-    fontFamily,
-    padding: 40
-  }), [text, fontSize, fontFamily])
-
-  const labelParams = useCalcLabelParams({
-    textObj,
-    text,
+  const textParams = useCalcTextParams({
     textRef,
-    tagRef,
+    text,
     width: template.text.width,
     height: template.text.height,
-    fontSize: template.text.fontSize,
+    fontSize: template.text.fontSize.from,
     fontFamily,
-    textAlign,
-    textPosition
+    textBox: template.text
   })
 
   useEffect(() => {
@@ -74,6 +55,11 @@ const CanvasImage = ({
         style={{ background: 'red' }}
       >
         <Layer>
+          <BackgroundColor
+            width={template.width}
+            height={template.height}
+            color="#fa9"
+          />
           <BackgroundImage
             url={background}
             x={template.width - template.image.width}
@@ -81,33 +67,18 @@ const CanvasImage = ({
             width={template.width}
             height={template.image.height}
           />
-          <Label
-            x={labelParams.x}
-            y={labelParams.y}
-            offsetY={labelParams.offsetY}
-            visible={labelParams.offsetY !== null && !!labelParams.text.length}
-          >
-            <Tag
-              ref={tagRef}
-              width={labelParams.width}
-              height={200}
-              fill={ substrateColor && !substrateColor.disabled
-                ? colorToRgba(substrateColor)
-                : 'rgba(0,0,0,0.5)'
-              }
-            />
-            <Text
-              ref={textRef}
-              text={labelParams.text}
-              fontSize={template.text.fontSize}
-              fontFamily={fontFamily}
-              lineHeight={1.2}
-              width={labelParams.width}
-              align={textAlign}
-              fill={textColor ? colorToRgba(textColor) : '#fff'}
-              padding={40}
-            />
-          </Label>
+          <Text
+            ref={textRef}
+            text={text}
+            fontSize={textParams.fontSize}
+            fontFamily={fontFamily}
+            lineHeight={1.2}
+            y={textParams.y}
+            width={template.text.width}
+            align={template.text.align}
+            fill={textColor ? colorToRgba(textColor) : '#000'}
+            padding={template.text.padding}
+          />
         </Layer>
       </Stage>
     </>

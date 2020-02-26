@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Rect } from 'react-konva'
-import { colorToRgba } from './helpers'
 
-const BackgroundColor = ({
-  onReady,
+export const BackgroundColor = ({
   width,
   height,
   color
 }) => {
-  useEffect(() => {
-    onReady()
-  }, [])
-
-  if (!color.hex) return null
-
   return (
     <Rect {...{
       width,
       height,
-      fill: colorToRgba(color)
+      fill: color
     }}/>
   )
 }
-
-export default BackgroundColor
