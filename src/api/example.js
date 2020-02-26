@@ -4,7 +4,7 @@ export const req = {
 
 export const res = [{
   titles: [
-    'Найдем вашу аудиторию'
+    'Найдем вашу аудиторию и приведем новых клиентов из интернета'
     // 'IN VINO VERITAS'
   ],
   texts: [
