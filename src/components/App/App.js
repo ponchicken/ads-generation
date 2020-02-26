@@ -14,15 +14,6 @@ export const App = () => {
               In vino veritas
               In vino veritas
               In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
-              In vino veritas
             </div>
           </header>
 

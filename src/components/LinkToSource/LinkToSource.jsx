@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { getDataFromLink } from 'api'
 import { LinksData } from 'store'
 import './style.css'
@@ -16,6 +16,14 @@ export const LinkToSource = () => {
       })
       .catch(error => console.warn(error))
   }
+
+  useEffect(() => {
+    getDataFromLink()
+      .then(data => {
+        setLinksData(data)
+      })
+      .catch(error => console.warn(error))
+  }, [])
 
   return (
     <form

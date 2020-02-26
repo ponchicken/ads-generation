@@ -3,11 +3,11 @@ import { Image } from 'react-konva'
 import useImage from 'use-image'
 import { cover } from './helpers'
 
-const BackgroundImage = ({
-  onReady,
+export const BackgroundImage = ({
   width,
   height,
-  url
+  url,
+  ...rest
 }) => {
   const [image, imageStatus] = useImage(`${url}`)
   const [imageParams, setImageParams] = useState({})
@@ -21,18 +21,19 @@ const BackgroundImage = ({
         image.naturalWidth,
         image.naturalHeight
       ))
-      onReady()
     }
-  }, [width, height, image, imageStatus, onReady])
+  }, [width, height, image, imageStatus])
 
   if (!image) return null
 
+  // console.log({
+  //   imageParams, rest
+  // })
   return (
     <Image
       image={image}
       {...imageParams}
+      {...rest}
     />
   )
 }
-
-export default BackgroundImage
