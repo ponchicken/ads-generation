@@ -24,8 +24,6 @@ export const useCalcTextParams = ({
   height,
   fontFamily
 }) => {
-  // const padding = textBox.padding
-  const doublePadding = textBox.padding * 2
   let fontSize = textBox.fontSize.from
 
   let textObj = calcTextObj({
@@ -55,9 +53,9 @@ export const useCalcTextParams = ({
   const y = (() => {
     switch (textBox.vertical) {
       case 'bottom':
-        return height - textObj.getHeight() - doublePadding
+        return height - textObj.getHeight()
       case 'center':
-        return (height - textObj.getHeight() - doublePadding) / 2
+        return (height - textObj.getHeight()) / 2
       case 'top':
       default:
         return 0

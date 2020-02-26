@@ -12,7 +12,7 @@ export const templates = Object.freeze([
       width: 600,
       height: 628,
       position: 'right',
-      align: 'left',
+      align: 'right',
       vertical: 'bottom',
       padding: 50,
       fontSize: {
