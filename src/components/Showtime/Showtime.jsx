@@ -18,7 +18,7 @@ export const Showtime = () => {
         <div className={`${block}-item`} key={i}>
           <Canvas
             {...{
-              texts: [text, title],
+              texts: [title, text],
               template,
               background: image.src
             }}

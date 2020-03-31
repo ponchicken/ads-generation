@@ -1,40 +1,99 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useCallback } from 'react'
 import { LinksData, Combinations } from 'store'
-import './style.css'
-
-const block = 'Review'
+import {
+  Wrapper, DataFromLink, Section, TextsWrapper, ImagesWrapper, Title
+} from './styled'
+import { ImageItem, TextItem } from './components'
 
 export const Review = () => {
   const { linksData } = useContext(LinksData.Context)
+  const {
+    setLinksDataFieldItem, removeLinksFieldItem
+  } = useContext(LinksData.ActionsContext)
   const { calcCombinations } = useContext(Combinations.ActionsContext)
 
   useEffect(() => {
     calcCombinations(linksData)
   }, [calcCombinations, linksData])
 
+  const changeFieldItem = useCallback(props => event => {
+    setLinksDataFieldItem({
+      ...props,
+      input: event.target.textContent
+    })
+  }, [])
+
+  const removeFieldItem = useCallback(props => () => {
+    removeLinksFieldItem(props)
+  }, [])
+
   if (!linksData) return null
 
   return (
-    <div className={`${block}`}>
-      { linksData.map((linkData, i) => (
-        <div className={`${block}-item`} key={i}>
-          <div className={`${block}-row`}>
-            { linkData.titles.map((title, i) => (
-              <div key={i}>{ title }</div>
-            )) }
-          </div>
-          <div className={`${block}-row`}>
-            { linkData.texts.map((text, i) => (
-              <strong key={i}>{ text }</strong>
-            )) }
-          </div>
-          <div className={`${block}-row`}>
-            { linkData.images.map((image, i) => (
-              <div key={i}>{ image.src }</div>
-            )) }
-          </div>
-        </div>
+    <Wrapper>
+      {linksData.map((linkData, i) => (
+        <DataFromLink key={i}>
+          <Section>
+            <Title>
+              Заголовок
+            </Title>
+            <TextsWrapper>
+              {linkData.titles.map((title, j) => (
+                <TextItem
+                  key={`${j}_${title}`}
+                  text={title}
+                  index={j}
+                  onChange={changeFieldItem({
+                    field: 'titles', i, j
+                  })}
+                  onRemove={removeFieldItem({
+                    field: 'titles', i, j
+                  })}
+                />
+              ))}
+            </TextsWrapper>
+          </Section>
+
+          <Section>
+            <Title>
+              Описание
+            </Title>
+            <TextsWrapper>
+              {linkData.texts.map((text, j) => (
+                <TextItem
+                  key={`${j}_${text}`}
+                  text={text}
+                  index={j}
+                  onChange={changeFieldItem({
+                    field: 'texts', i, j
+                  })}
+                  onRemove={removeFieldItem({
+                    field: 'texts', i, j
+                  })}
+                />
+              ))}
+            </TextsWrapper>
+          </Section>
+
+          <Section>
+            <Title>
+              Изображение
+            </Title>
+            <ImagesWrapper>
+              {linkData.images.map((image, j) => (
+                <ImageItem
+                  key={`${j}_${image.src}`}
+                  image={image}
+                  index={j}
+                  onRemove={removeFieldItem({
+                    field: 'images', i, j
+                  })}
+                />
+              ))}
+            </ImagesWrapper>
+          </Section>
+        </DataFromLink>
       ))}
-    </div>
+    </Wrapper>
   )
 }
