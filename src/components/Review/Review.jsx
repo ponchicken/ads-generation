@@ -21,11 +21,11 @@ export const Review = () => {
       ...props,
       input: event.target.textContent
     })
-  }, [])
+  }, [setLinksDataFieldItem])
 
   const removeFieldItem = useCallback(props => () => {
     removeLinksFieldItem(props)
-  }, [])
+  }, [removeLinksFieldItem])
 
   if (!linksData) return null
 
