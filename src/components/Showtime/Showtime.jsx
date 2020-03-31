@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Combinations } from 'store'
 import './style.css'
-import { CanvasImage } from 'components'
+import { Canvas } from 'components'
 
 const block = 'Showtime'
 
@@ -16,9 +16,9 @@ export const Showtime = () => {
         template, image, text, title
       }, i) => (
         <div className={`${block}-item`} key={i}>
-          <CanvasImage
+          <Canvas
             {...{
-              text: title,
+              texts: [text, title],
               template,
               background: image.src
             }}

@@ -23,7 +23,7 @@ export const LinkToSource = () => {
         setLinksData(data)
       })
       .catch(error => console.warn(error))
-  }, [])
+  }, [setLinksData])
 
   return (
     <form

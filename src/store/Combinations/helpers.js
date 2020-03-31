@@ -3,7 +3,7 @@ export function getCartesian (object) {
     var temp = []
     r.forEach(s =>
       (Array.isArray(v) ? v : [v]).forEach(w =>
-        (w && typeof w === 'object' ? getCartesian(w) : [w]).forEach(x =>
+        (w && [w]).forEach(x =>
           temp.push(Object.assign({}, s, { [k]: x }))
         )
       )

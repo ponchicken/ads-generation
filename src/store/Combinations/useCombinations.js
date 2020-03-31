@@ -11,7 +11,15 @@ export const useCombinations = () => {
       const normalized = normalizeLinksData({ ...linkData, templates })
       return getCartesian(normalized)
     })
-    setCombinations(...combinations)
+    if (combinations.length) {
+      setCombinations(combinations[0].sort((a, b) => {
+        return a.template.key > b.template.key
+          ? 1
+          : a.template.key < b.template.key
+            ? -1
+            : 0
+      }))
+    }
   }, [setCombinations])
 
   const actions = useMemo(() => ({

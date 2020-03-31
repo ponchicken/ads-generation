@@ -1,135 +1,185 @@
 export const templates = Object.freeze([
   {
     key: 'key1',
-    width: 1200,
-    height: 628,
-    image: {
-      width: 600,
-      height: 628,
-      position: 'left'
+    width: 1080,
+    height: 1920,
+    backgroundColor: '#212121',
+    background: {
+      x: 0,
+      y: 380,
+      width: 1080,
+      height: 650,
+      isCover: false
     },
-    text: {
-      width: 600,
-      height: 628,
-      position: 'right',
-      align: 'right',
-      vertical: 'bottom',
-      padding: 50,
-      fontSize: {
-        from: 45,
-        to: 80
-      }
-    }
+    texts: [{
+      x: 0,
+      y: 1200,
+      width: 1080,
+      height: 240,
+      textAlign: 'left',
+      verticalAlign: 'center',
+      hPadding: 100,
+      vPadding: 20,
+      fontSize: 72,
+      lineHeight: 84,
+      fontFamily: 'Arial',
+      fontWeight: 'bold',
+      textColor: '#fff',
+      backgroundColor: ''
+    },
+    {
+      x: 0,
+      y: 1460,
+      width: 1080,
+      height: 300,
+      autoHeight: true,
+      textAlign: 'left',
+      verticalAlign: 'top',
+      hPadding: 100,
+      vPadding: 10,
+      fontSize: 40,
+      lineHeight: 70,
+      fontFamily: 'Arial',
+      textColor: '#fff',
+      backgroundColor: ''
+    }]
   },
   {
     key: 'key2',
     width: 1080,
-    height: 1920,
-    image: {
+    height: 1080,
+    backgroundColor: '#212121',
+    background: {
+      x: 0,
+      y: 100,
       width: 1080,
-      height: 900,
-      position: 'top'
+      height: 460,
+      isCover: false
     },
-    text: {
+    texts: [{
+      x: 0,
+      y: 600,
       width: 1080,
-      height: 1020,
-      position: 'bottom',
-      align: 'center',
-      vertical: 'center',
-      padding: 50,
-      fontSize: {
-        from: 80,
-        to: 180
-      }
-    }
+      height: 200,
+      textAlign: 'center',
+      verticalAlign: 'center',
+      hPadding: 100,
+      vPadding: 20,
+      fontSize: 66,
+      lineHeight: 80,
+      fontFamily: 'Arial',
+      fontWeight: 'bold',
+      textColor: '#fff',
+      backgroundColor: ''
+    },
+    {
+      x: 0,
+      y: 820,
+      width: 1080,
+      height: 300,
+      textAlign: 'center',
+      verticalAlign: 'top',
+      hPadding: 100,
+      vPadding: 10,
+      fontSize: 32,
+      lineHeight: 52,
+      fontFamily: 'Arial',
+      textColor: '#fff',
+      backgroundColor: '',
+      autoHeight: true,
+      pinTo: 'bottom'
+    }]
   },
   {
     key: 'key3',
     width: 1080,
-    height: 1080,
-    image: {
-      width: 1080,
-      height: 500,
-      position: 'top'
+    height: 610,
+    backgroundColor: '#212121',
+    background: {
+      x: 40,
+      y: 40,
+      width: 520,
+      height: 530,
+      isCover: false
     },
-    text: {
-      width: 1080,
-      height: 580,
-      position: 'bottom',
-      align: 'left',
-      vertical: 'bottom',
-      padding: 50,
-      fontSize: {
-        from: 50,
-        to: 150
-      }
-    }
+    texts: [{
+      x: 560,
+      y: 50,
+      width: 520,
+      height: 250,
+      textAlign: 'left',
+      verticalAlign: 'center',
+      hPadding: 50,
+      vPadding: 20,
+      fontSize: 48,
+      lineHeight: 60,
+      fontFamily: 'Arial',
+      fontWeight: 'bold',
+      textColor: '#fff',
+      backgroundColor: ''
+    },
+    {
+      x: 560,
+      y: 300,
+      width: 520,
+      height: 300,
+      textAlign: 'left',
+      verticalAlign: 'top',
+      hPadding: 50,
+      vPadding: 10,
+      fontSize: 28,
+      lineHeight: 42,
+      fontFamily: 'Arial',
+      textColor: '#fff',
+      backgroundColor: '',
+      autoHeight: true,
+      pinTo: 'bottom'
+    }]
   },
   {
     key: 'key4',
     width: 1080,
-    height: 607,
-    image: {
-      width: 500,
-      height: 607,
-      position: 'left'
+    height: 1080,
+    backgroundColor: '#212121',
+    background: {
+      x: 0,
+      y: 0,
+      width: 1080,
+      height: 1080,
+      isCover: true
     },
-    text: {
-      width: 580,
-      height: 607,
-      position: 'right',
-      align: 'left',
-      vertical: 'top',
-      padding: 50,
-      fontSize: {
-        from: 50,
-        to: 150
-      }
-    }
-  },
-
-  {
-    key: 'key11',
-    width: 600,
-    height: 628,
-    image: {
-      width: 300,
-      height: 628,
-      position: 'left'
+    texts: [{
+      x: 0,
+      y: 0,
+      width: 1080,
+      height: 600,
+      textAlign: 'center',
+      verticalAlign: 'center',
+      hPadding: 100,
+      vPadding: 40,
+      fontSize: 130,
+      lineHeight: 140,
+      fontFamily: 'Arial',
+      fontWeight: 'bold',
+      textColor: '#fff',
+      backgroundColor: '#cc2600cc'
     },
-    text: {
-      width: 300,
-      height: 628,
-      position: 'right',
-      align: 'left',
-      vertical: 'top',
-      padding: 50,
-      fontSize: {
-        from: 25,
-        to: 80
-      }
-    }
-  },
-  {
-    key: 'key12',
-    width: 1200,
-    height: 428,
-    image: {
-      width: 600,
-      height: 628,
-      position: 'left'
-    },
-    text: {
-      width: 600,
-      height: 428,
-      position: 'right',
-      align: 'left',
-      vertical: 'top',
-      padding: 50,
-      fontSize: {
-        from: 25,
-        to: 80
-      }
-    }
+    {
+      x: 0,
+      y: 930,
+      width: 1080,
+      height: 150,
+      textAlign: 'center',
+      verticalAlign: 'center',
+      hPadding: 100,
+      vPadding: 10,
+      fontSize: 32,
+      lineHeight: 52,
+      fontFamily: 'Arial',
+      fontWeight: 'bold',
+      textColor: '#000',
+      backgroundColor: '#fffc',
+      pinTo: 'bottom'
+    }]
   }
 ])
