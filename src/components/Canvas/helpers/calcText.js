@@ -15,8 +15,6 @@ export const calcText = (props) => {
     vPadding
   } = props
 
-  console.log(props)
-
   const textWidth = width - hPadding * 2
   const textHeight = height - vPadding * 2
 
