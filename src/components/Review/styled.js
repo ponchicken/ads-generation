@@ -3,12 +3,11 @@ import { CloseButton } from 'components/CloseButton'
 
 export const Remove = styled(CloseButton)`
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 `
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 600px;
   word-break: break-word;
   display: grid;
   grid-gap: 50px;
@@ -21,7 +20,7 @@ export const DataFromLink = styled.div`
 
 export const Section = styled.div`
   display: grid;
-  grid-gap: 15px;
+  grid-gap: 20px;
 `
 
 export const TextsWrapper = styled.div`
@@ -41,10 +40,11 @@ export const Item = styled.div`
   padding: 10px 20px;
   background: #fff3;
   border-radius: 3px;
+  overflow: hidden;
 
   &:hover ${Remove} {
     opacity: 1;
-    transition: opacity .1s ease;
+    transition: opacity 0.1s ease;
   }
 `
 

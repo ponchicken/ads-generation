@@ -3,7 +3,7 @@ import { calcImageFit } from './helpers'
 const drawCover = (ctx, {
   background
 }) => {
-  const yoyo = calcImageFit(background.isCover)(
+  const fit = calcImageFit(background.isCover)(
     background.bitmap.width,
     background.bitmap.height,
     background.width,
@@ -12,7 +12,7 @@ const drawCover = (ctx, {
 
   const {
     width, height, x, y
-  } = yoyo
+  } = fit
 
   ctx.drawImage(
     background.bitmap,

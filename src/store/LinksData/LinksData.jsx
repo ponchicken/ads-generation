@@ -2,14 +2,15 @@ import React, { createContext, useMemo } from 'react'
 import { useLinksData } from './useLinksData'
 import { useLoadImages } from './useLoadImages'
 
-const Context = createContext([])
+const Context = createContext({})
+const WasChanged = createContext(false)
 const ActionsContext = createContext({})
 
 const Provider = ({
   children
 }) => {
   const {
-    actions, value
+    actions, value, wasChanged
   } = useLinksData()
 
   const loadImagesActions = useLoadImages(value.linksData)
@@ -21,13 +22,15 @@ const Provider = ({
 
   return (
     <Context.Provider value={value}>
-      <ActionsContext.Provider value={mergedActions}>
-        { children }
-      </ActionsContext.Provider>
+      <WasChanged.Provider value={wasChanged}>
+        <ActionsContext.Provider value={mergedActions}>
+          { children }
+        </ActionsContext.Provider>
+      </WasChanged.Provider>
     </Context.Provider>
   )
 }
 
 export {
-  Context, ActionsContext, Provider
+  Context, WasChanged, ActionsContext, Provider
 }

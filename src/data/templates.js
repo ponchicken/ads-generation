@@ -3,7 +3,7 @@ export const templates = Object.freeze([
     key: 'key1',
     width: 1080,
     height: 1920,
-    backgroundColor: '#212121',
+    backgroundColor: '#000',
     background: {
       x: 0,
       y: 380,
@@ -48,7 +48,7 @@ export const templates = Object.freeze([
     key: 'key2',
     width: 1080,
     height: 1080,
-    backgroundColor: '#212121',
+    backgroundColor: '#000',
     background: {
       x: 0,
       y: 100,
@@ -94,7 +94,7 @@ export const templates = Object.freeze([
     key: 'key3',
     width: 1080,
     height: 610,
-    backgroundColor: '#212121',
+    backgroundColor: '#000',
     background: {
       x: 40,
       y: 40,
@@ -140,7 +140,7 @@ export const templates = Object.freeze([
     key: 'key4',
     width: 1080,
     height: 1080,
-    backgroundColor: '#212121',
+    backgroundColor: '#000',
     background: {
       x: 0,
       y: 0,

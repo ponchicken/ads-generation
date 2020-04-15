@@ -1,30 +1,36 @@
 import { useState, useMemo, useCallback } from 'react'
 import { templates } from 'data/templates'
-import { getCartesian } from './helpers'
+import { getCartesianIndexes } from './helpers'
 import { normalizeLinksData } from './normalize'
 
 export const useCombinations = () => {
   const [combinations, setCombinations] = useState([])
 
   const calcCombinations = useCallback((linksData) => {
-    const combinations = linksData.map(linkData => {
-      const normalized = normalizeLinksData({ ...linkData, templates })
-      return getCartesian(normalized)
-    })
+    const normalized = normalizeLinksData(linksData)
+    const combinations = getCartesianIndexes(normalized)
+
     if (combinations.length) {
-      setCombinations(combinations[0].sort((a, b) => {
-        return a.template.key > b.template.key
+      setCombinations(combinations.sort((a, b) => {
+        return templates[a.template] > templates[b.template]
           ? 1
-          : a.template.key < b.template.key
+          : templates[a.template] < templates[b.template]
             ? -1
             : 0
-      }))
+      })
+      )
     }
   }, [setCombinations])
 
+  const removeItem = useCallback((index) => {
+    setCombinations(prev => {
+      return prev.filter((item, i) => i !== index)
+    })
+  }, [setCombinations])
+
   const actions = useMemo(() => ({
-    calcCombinations
-  }), [calcCombinations])
+    calcCombinations, removeItem
+  }), [calcCombinations, removeItem])
 
   const value = useMemo(() => ({
     combinations

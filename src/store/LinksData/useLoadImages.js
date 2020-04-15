@@ -1,23 +1,26 @@
 import { useEffect } from 'react'
 
-const loadImage = (() => {
+const loadImageCreator = () => {
   const memoized = {}
 
   return (src) => {
-    return new Promise((resolve) => {
-      if (!src) return resolve(null)
-      if (memoized[src]) resolve(memoized[src])
+    if (memoized[src]) return memoized[src]
 
+    memoized[src] = new Promise((resolve) => {
       const img = new Image()
       img.src = src
+      img.crossOrigin = 'Anonymous'
 
       img.onload = () => {
-        memoized[src] = createImageBitmap(img)
-        resolve(memoized[src])
+        resolve(createImageBitmap(img))
       }
     })
+
+    return memoized[src]
   }
-})()
+}
+
+const loadImage = loadImageCreator()
 
 const preloadImages = (images) => {
   return Promise.all(
@@ -26,9 +29,7 @@ const preloadImages = (images) => {
 }
 
 export const useLoadImages = (linksData) => {
-  const images = linksData.reduce((sum, cur) => {
-    return sum.concat(cur.images)
-  }, [])
+  const images = linksData.images
 
   useEffect(() => {
     if (images) {

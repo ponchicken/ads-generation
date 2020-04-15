@@ -26,9 +26,6 @@ export const BackgroundImage = ({
 
   if (!image) return null
 
-  // console.log({
-  //   imageParams, rest
-  // })
   return (
     <Image
       image={image}

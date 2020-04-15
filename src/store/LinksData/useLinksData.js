@@ -1,35 +1,46 @@
 import { useState, useMemo, useCallback } from 'react'
 
 export const useLinksData = () => {
-  const [linksData, setLinksData] = useState([])
+  const [linksData, setLinksDataState] = useState({})
+  const [wasChanged, setWasChanged] = useState(false)
+
+  const setLinksData = useCallback((data) => {
+    setLinksDataState(data)
+  }, [setLinksDataState, setWasChanged])
 
   const setLinksDataFieldItem = useCallback(({
-    input, field, i, j
+    input, field, i
   }) => {
-    setLinksData(data => {
-      data[i][field][j] = input
-      return [...data]
+    setLinksDataState(data => {
+      const newData = Object.assign({}, data)
+      newData[field][i] = input
+      return newData
     })
-  }, [])
+  }, [setLinksDataState])
 
   const removeLinksFieldItem = useCallback(({
-    field, i, j
+    field, i
   }) => {
     setLinksData(data => {
-      data[i][field].splice(j, 1)
-      return [...data]
+      if (data[field].length > 1) {
+        const newData = Object.assign({}, data)
+        newData[field].splice(i, 1)
+        setWasChanged(true)
+        return newData
+      }
+      return data
     })
-  }, [])
+  }, [setLinksData, setWasChanged])
 
   const actions = useMemo(() => ({
-    setLinksData, setLinksDataFieldItem, removeLinksFieldItem
-  }), [setLinksData, setLinksDataFieldItem, removeLinksFieldItem])
+    setLinksData, setLinksDataFieldItem, removeLinksFieldItem, setWasChanged
+  }), [setLinksData, setLinksDataFieldItem, removeLinksFieldItem, setWasChanged])
 
   const value = useMemo(() => ({
     linksData
   }), [linksData])
 
   return {
-    actions, value
+    actions, value, wasChanged
   }
 }
