@@ -1,7 +1,8 @@
 {
   "name": "ads-generation",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://ponchicken.github.io/ads-generation/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
