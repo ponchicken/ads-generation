@@ -1,18 +1,18 @@
 import React, { createContext } from 'react'
 import { useResult } from './useResult'
 
-const Context = createContext([])
+const Context = createContext({})
 const ActionsContext = createContext({})
 
 const Provider = ({
   children
 }) => {
   const {
-    actions, value
+    actions, result
   } = useResult()
 
   return (
-    <Context.Provider value={value}>
+    <Context.Provider value={result}>
       <ActionsContext.Provider value={actions}>
         {children}
       </ActionsContext.Provider>

@@ -6,7 +6,7 @@ export const useLinksData = () => {
 
   const setLinksData = useCallback((data) => {
     setLinksDataState(data)
-  }, [setLinksDataState, setWasChanged])
+  }, [setLinksDataState])
 
   const setLinksDataFieldItem = useCallback(({
     input, field, i

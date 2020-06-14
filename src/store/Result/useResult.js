@@ -3,11 +3,11 @@ import { Combinations } from 'store'
 
 export const useResult = () => {
   const { combinations } = useContext(Combinations.Context)
-  const [result, setResult] = useState([])
+  const [result, setResult] = useState({})
 
   useEffect(() => {
     if (combinations.length) {
-      setResult([])
+      setResult({})
     }
   }, [combinations, setResult])
 
@@ -15,12 +15,12 @@ export const useResult = () => {
     data, id
   }) => {
     setResult(prev => {
-      const newArray = prev.slice()
-      newArray[id] = {
-        ...newArray[id],
+      const result = Object.assign({}, prev)
+      result[id] = {
+        ...result[id],
         ...data
       }
-      return newArray
+      return result
     })
   }, [setResult])
 
