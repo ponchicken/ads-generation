@@ -6,6 +6,7 @@ import {
 export const ImageItem = ({
   image, onRemove
 }) => {
+  console.log(image)
   return (
     <Wrapper>
       <Image src={image.src} />

@@ -1,24 +1,59 @@
-// import axios from 'axios'
-import { res } from './example'
+import axios from 'axios'
+// import { res } from './example'
 import { templates } from 'data/templates'
 
-export const getDataFromLink = () => {
-  return new Promise((resolve, reject) => {
-    try {
-      const d = Object.keys(res).reduce((prev, key) => {
-        return {
-          ...prev,
-          [key]: res[key].slice()
-        }
-      }, {})
-      resolve({
-        ...d,
-        templates
-      })
-    } catch (error) {
-      reject(error)
-    }
+// const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev/'
+const root = 'http://localhost:3006/'
+
+export const getDataFromLink = (params) => {
+  return axios.get(root, {
+    params
   })
+    .then(response => {
+      return {
+        ...response.data,
+        templates
+      }
+    })
+    .catch(error => {
+      console.error(error)
+    })
+    // .then(response => {
+    //   console.log(response)
+    //   return Promise.all(
+    //     response.data.images.map(image => {
+    //       return {
+    //         ...image,
+    //         src: URL.createObjectURL(new Blob([image.data]), { type: 'image/png' })
+    //       }
+    //     })
+    //   ).then(images => {
+    //     console.log(images)
+
+  //     return {
+  //       ...response.data,
+  //       images,
+  //       templates
+  //     }
+  //   })
+  // })
+
+  // return new Promise((resolve, reject) => {
+  //   try {
+  //     const d = Object.keys(res).reduce((prev, key) => {
+  //       return {
+  //         ...prev,
+  //         [key]: res[key].slice()
+  //       }
+  //     }, {})
+  //     resolve({
+  //       ...d,
+  //       templates
+  //     })
+  //   } catch (error) {
+  //     reject(error)
+  //   }
+  // })
   // return axios.get('/')
   //   .then(data => {
   //     const d = Object.keys(res).reduce((prev, key) => {

@@ -11,7 +11,7 @@ export const Review = () => {
     setLinksDataFieldItem, removeLinksFieldItem
   } = useContext(LinksData.ActionsContext)
 
-  const hasLinksData = Object.keys(linksData).length > 0
+  const hasLinksData = Object.values(linksData).filter(link => typeof link === 'object').length > 2
 
   const changeFieldItem = useCallback(props => event => {
     setLinksDataFieldItem({
