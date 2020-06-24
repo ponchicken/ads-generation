@@ -1,17 +1,20 @@
 import React, { useContext, useState } from 'react'
 import { getDataFromLink } from 'api'
 import { LinksData, Combinations } from 'store'
+import { Loader } from 'components'
 import './style.css'
 
 const block = 'LinkToSource'
 
 export const LinkToSource = () => {
-  const [link, setLink] = useState('https://www.facebook.com/business/tools/ads-manager')
+  const [isLoading, setLoading] = useState(false)
+  const [link, setLink] = useState('')
   const { setLinksData } = useContext(LinksData.ActionsContext)
   const { calcCombinations } = useContext(Combinations.ActionsContext)
 
   const onLinkSubmit = (e) => {
     e.preventDefault()
+    setLoading(true)
     getDataFromLink({
       url: link
     })
@@ -20,6 +23,9 @@ export const LinkToSource = () => {
         calcCombinations(data)
       })
       .catch(error => console.warn(error))
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   return (
@@ -36,8 +42,13 @@ export const LinkToSource = () => {
       <button
         className={`${block}-submit`}
         type="submit"
+        disabled={!link || isLoading}
       >
-        загрузить
+        <Loader isLoading={isLoading} size='s' />
+
+        {!isLoading && (
+          'загрузить'
+        )}
       </button>
     </form>
   )
