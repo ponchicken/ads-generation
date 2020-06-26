@@ -19,10 +19,18 @@ export const LinkToSource = () => {
       url: link
     })
       .then(data => {
-        setLinksData(data)
-        calcCombinations(data)
+        try {
+          if (data) {
+            setLinksData(data)
+            calcCombinations(data)
+          }
+        } catch (e) {
+          throw new Error(e)
+        }
       })
-      .catch(error => console.warn(error))
+      .catch(error => {
+        console.warn(error)
+      })
       .finally(() => {
         setLoading(false)
       })

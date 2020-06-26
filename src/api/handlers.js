@@ -2,11 +2,11 @@ import axios from 'axios'
 // import { res } from './example'
 import { templates } from 'data/templates'
 
-const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev/'
-// const root = 'http://localhost:3006/'
+const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev'
+// const root = 'http://localhost:3006'
 
 export const endpoints = {
-  getUrlData: `${root}getUrlData`,
+  getUrlData: `${root}/getUrlData`,
   imageUrl: `${root}/imageUrl?url=`
 }
 
