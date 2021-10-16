@@ -6,9 +6,11 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    #branches: [ master ]
+    branches: [  ]
   pull_request:
-    branches: [ master ]
+    #branches: [ master ]
+    branches: [  ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,6 +33,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install deps
         run: npm install
+    
+      - name: Build
+        run: npm run build
           
       - name: GitHub Pages
         # You may pin to the exact commit or the version.
