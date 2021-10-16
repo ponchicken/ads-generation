@@ -5,7 +5,7 @@ import { templates } from 'data/templates'
 // const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev'
 const root = process.env.NODE_ENV === 'development'
   ? 'http://localhost:3006'
-  : 'https://ads-gen.herokuapp.com/'
+  : 'https://ads-gen.herokuapp.com'
 
 export const endpoints = {
   getUrlData: `${root}/getUrlData`,
