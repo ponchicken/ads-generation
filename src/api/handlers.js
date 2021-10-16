@@ -2,8 +2,10 @@ import axios from 'axios'
 // import { res } from './example'
 import { templates } from 'data/templates'
 
-const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev'
-// const root = 'http://localhost:3006'
+// const root = 'https://725epzm94l.execute-api.eu-central-1.amazonaws.com/dev'
+const root = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:3006'
+  : 'https://ads-gen.herokuapp.com/'
 
 export const endpoints = {
   getUrlData: `${root}/getUrlData`,
@@ -27,17 +29,17 @@ export const getDataFromLink = (params) => {
     .catch(error => {
       console.error(error)
     })
-    // .then(response => {
-    //   console.log(response)
-    //   return Promise.all(
-    //     response.data.images.map(image => {
-    //       return {
-    //         ...image,
-    //         src: URL.createObjectURL(new Blob([image.data]), { type: 'image/png' })
-    //       }
-    //     })
-    //   ).then(images => {
-    //     console.log(images)
+  // .then(response => {
+  //   console.log(response)
+  //   return Promise.all(
+  //     response.data.images.map(image => {
+  //       return {
+  //         ...image,
+  //         src: URL.createObjectURL(new Blob([image.data]), { type: 'image/png' })
+  //       }
+  //     })
+  //   ).then(images => {
+  //     console.log(images)
 
   //     return {
   //       ...response.data,

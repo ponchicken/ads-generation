@@ -25,8 +25,10 @@ export const useDownload = ({
         width, height
       } = creative.template
 
+      const text = creative.texts[0] || creative.texts[1] || ''
+
       zip.file(
-        `${width}_${height}_${key}.png`,
+        `${width}x${height}_${key}_${text.substring(0, 5).replaceAll(' ', '-')}.png`,
         filePromise
       )
     })
