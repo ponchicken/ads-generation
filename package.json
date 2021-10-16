@@ -2,7 +2,7 @@
   "name": "ads-generation",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://ponchicken.github.io/ads-generation/",
+  "homepage": "https://ponchicken.github.io/ads-generation",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
