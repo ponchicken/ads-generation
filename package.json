@@ -4,20 +4,19 @@
   "private": false,
   "homepage": "https://ponchicken.github.io/ads-generation/",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "aws-amplify": "^3.0.18",
-    "axios": "^0.19.2",
-    "canvas-txt": "^2.0.9",
-    "file-saver": "^2.0.2",
-    "gh-pages": "^3.0.0",
-    "jszip": "^3.4.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.4.0",
-    "styled-components": "^5.0.1",
-    "use-image": "^1.0.5"
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.4.1",
+    "axios": "^0.23.0",
+    "canvas-txt": "^3.0.0",
+    "file-saver": "^2.0.5",
+    "gh-pages": "^3.2.3",
+    "jszip": "^3.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "styled-components": "^5.3.1",
+    "use-image": "^1.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,13 +43,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-standard": "^4.0.1",
-    "worker-loader": "^2.0.0"
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "worker-loader": "^3.0.8"
   }
 }
