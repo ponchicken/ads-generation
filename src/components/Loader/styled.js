@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 const blink = keyframes`
   0% {
@@ -25,6 +25,11 @@ export const Spinner = styled.div`
   position: relative;
   width: 40px;
   height: 40px;
+
+  ${({ size }) => size === 's' && css`
+    width: 10px;
+    height: 0;
+  `}
 
   div {
     border: 8px solid #fff;
