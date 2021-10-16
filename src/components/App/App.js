@@ -17,6 +17,7 @@ export const App = () => {
                   In vino veritas
                   In vino veritas
                 </div>
+                {/* <img src='http://127.0.0.1:3006/imageUrl/https%3A%2F%2Fimages.pexels.com%2Fphotos%2F36717%2Famazing-animal-beautiful-beautifull.jpg%3Fcs%3Dsrgb%26dl%3Dflight-landscape-nature-sky-36717.jpg%26fm%3Djpg' /> */}
               </header>
 
               <main className="App-main">

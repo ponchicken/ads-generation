@@ -50,17 +50,19 @@ export const Canvas = ({
     }
   }, [template, texts, background, loadImage, changeResultItem, id, setReady])
 
+  const text = texts[0] || texts[1] || ''
+
   return (
     <Wrapper>
       <Loader
         isLoading={!isReady}
       />
 
-      { isReady && <>
+      {isReady && <>
         <DownloadButton
           onClick={downloadCanvas({
             canvas,
-            filename: 'yoyoy'
+            filename: `${template.width}x${template.height}_${id}_${text.substring(0, 5).replaceAll(' ', '-')}`
           })}
         >
           download

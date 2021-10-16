@@ -37,7 +37,7 @@ export const Showtime = () => {
                   id: key,
                   texts: [linksData.titles[title], linksData.texts[text]],
                   template: linksData.templates[template],
-                  background: linksData.images[image].src,
+                  background: linksData.images[image]?.src,
                   onRemove: removeCombinationItem(i)
                 }}
               />
