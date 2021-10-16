@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useCallback, useState, useEffect } from 'react'
 import { getDataFromLink } from 'api'
 import { LinksData, Combinations } from 'store'
 import { Loader } from 'components'
@@ -12,9 +12,9 @@ export const LinkToSource = () => {
   const { setLinksData } = useContext(LinksData.ActionsContext)
   const { calcCombinations } = useContext(Combinations.ActionsContext)
 
-  const onLinkSubmit = (e) => {
-    e.preventDefault()
+  const requestData = useCallback((link) => {
     setLoading(true)
+
     getDataFromLink({
       url: link
     })
@@ -34,7 +34,29 @@ export const LinkToSource = () => {
       .finally(() => {
         setLoading(false)
       })
+  }, [])
+
+  const onLinkSubmit = (e) => {
+    e.preventDefault()
+
+    const url = new URL(location.href)
+    console.log(url)
+
+    url.searchParams.set('search', encodeURI(link))
+    history.pushState({}, link, `${url.pathname}?${url.searchParams.toString()}`)
+
+    requestData(link)
   }
+
+  useEffect(() => {
+    const url = new URL(location.href)
+    const searchString = url.searchParams.get('search')
+
+    if (searchString) {
+      setLink(searchString)
+      requestData(searchString)
+    }
+  }, [])
 
   return (
     <form
