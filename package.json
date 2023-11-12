@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.4.1",
-    "axios": "^0.23.0",
+    "axios": "^1.6.0",
     "canvas-txt": "^3.0.0",
     "file-saver": "^2.0.5",
     "gh-pages": "^3.2.3",
